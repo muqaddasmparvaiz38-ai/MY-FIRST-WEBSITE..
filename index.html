@@ -1,0 +1,330 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BookNest - Online Book Store</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+    <nav class="navbar">
+        <div class="logo">Book<span>Nest</span></div>
+
+        <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#shop">Shop</a></li>
+            <li><a href="#authors">Authors</a></li>
+            <li><a href="#seller">Sell Books</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+
+        <button class="cart-btn" onclick="openCart()">
+            Cart (<span id="cartCount">0</span>)
+        </button>
+    </nav>
+</header>
+
+<section class="hero" id="home">
+    <div class="hero-content">
+        <h1>Discover Your Next <span>Great Book</span></h1>
+        <p>Welcome to BookNest, your online destination for discovering amazing books, talented authors and timeless stories.</p>
+        <a href="#shop" class="hero-btn">Explore Books</a>
+    </div>
+</section>
+
+<section class="section" id="shop">
+    <div class="section-title">
+        <h2>Explore Our Books</h2>
+        <p>Find your next favorite book from our collection.</p>
+    </div>
+
+    <div class="search-box">
+        <input type="text" id="searchInput"
+        placeholder="Search books or authors...">
+        <button onclick="searchBooks()">Search</button>
+    </div>
+
+    <div class="categories">
+        <button class="category-btn active" onclick="filterBooks('All',this)">All</button>
+        <button class="category-btn" onclick="filterBooks('Fiction',this)">Fiction</button>
+        <button class="category-btn" onclick="filterBooks('Business',this)">Business</button>
+        <button class="category-btn" onclick="filterBooks('Technology',this)">Technology</button>
+        <button class="category-btn" onclick="filterBooks('Education',this)">Education</button>
+        <button class="category-btn" onclick="filterBooks('Islamic',this)">Islamic</button>
+    </div>
+
+    <div class="book-grid" id="bookGrid">
+
+        <div class="book-card" data-category="Fiction" data-title="The Great Adventure" data-author="John Smith">
+            <img class="book-image" src="https://images.unsplash.com/photo-1543002588-bfa74002ed7e?auto=format&fit=crop&w=600&q=80" alt="Book">
+            <div class="book-info">
+                <h3>The Great Adventure</h3>
+                <p class="author">By John Smith</p>
+                <div class="rating">★★★★★</div>
+                <div class="book-bottom">
+                    <span class="price">Rs. 1,499</span>
+                    <button class="add-btn" onclick="addToCart(this)">Add</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="book-card" data-category="Business" data-title="Think Like a Leader" data-author="Robert James">
+            <img class="book-image" src="https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=600&q=80" alt="Book">
+            <div class="book-info">
+                <h3>Think Like a Leader</h3>
+                <p class="author">By Robert James</p>
+                <div class="rating">★★★★☆</div>
+                <div class="book-bottom">
+                    <span class="price">Rs. 1,899</span>
+                    <button class="add-btn" onclick="addToCart(this)">Add</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="book-card" data-category="Technology" data-title="Modern Web Development" data-author="Ahmed Khan">
+            <img class="book-image" src="https://images.unsplash.com/photo-1515879218367-8466d910aaa4?auto=format&fit=crop&w=600&q=80" alt="Book">
+            <div class="book-info">
+                <h3>Modern Web Development</h3>
+                <p class="author">By Ahmed Khan</p>
+                <div class="rating">★★★★★</div>
+                <div class="book-bottom">
+                    <span class="price">Rs. 2,299</span>
+                    <button class="add-btn" onclick="addToCart(this)">Add</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="book-card" data-category="Education" data-title="Learn Every Day" data-author="Sarah Wilson">
+            <img class="book-image" src="https://images.unsplash.com/photo-1495446815901-a7297e633e8d?auto=format&fit=crop&w=600&q=80" alt="Book">
+            <div class="book-info">
+                <h3>Learn Every Day</h3>
+                <p class="author">By Sarah Wilson</p>
+                <div class="rating">★★★★☆</div>
+                <div class="book-bottom">
+                    <span class="price">Rs. 999</span>
+                    <button class="add-btn" onclick="addToCart(this)">Add</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="book-card" data-category="Islamic" data-title="Path of Peace" data-author="Muhammad Ali">
+            <img class="book-image" src="https://images.unsplash.com/photo-1609599006353-e629aaabfeae?auto=format&fit=crop&w=600&q=80" alt="Book">
+            <div class="book-info">
+                <h3>Path of Peace</h3>
+                <p class="author">By Muhammad Ali</p>
+                <div class="rating">★★★★★</div>
+                <div class="book-bottom">
+                    <span class="price">Rs. 1,299</span>
+                    <button class="add-btn" onclick="addToCart(this)">Add</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="book-card" data-category="Fiction" data-title="Mystery Island" data-author="Emma Brown">
+            <img class="book-image" src="https://images.unsplash.com/photo-1511108690759-009324a90311?auto=format&fit=crop&w=600&q=80" alt="Book">
+            <div class="book-info">
+                <h3>Mystery Island</h3>
+                <p class="author">By Emma Brown</p>
+                <div class="rating">★★★★☆</div>
+                <div class="book-bottom">
+                    <span class="price">Rs. 1,599</span>
+                    <button class="add-btn" onclick="addToCart(this)">Add</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="book-card" data-category="Business" data-title="Start Your Business" data-author="David Miller">
+            <img class="book-image" src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=600&q=80" alt="Book">
+            <div class="book-info">
+                <h3>Start Your Business</h3>
+                <p class="author">By David Miller</p>
+                <div class="rating">★★★★★</div>
+                <div class="book-bottom">
+                    <span class="price">Rs. 1,799</span>
+                    <button class="add-btn" onclick="addToCart(this)">Add</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="book-card" data-category="Technology" data-title="Python for Beginners" data-author="James Anderson">
+            <img class="book-image" src="https://images.unsplash.com/photo-1526379095098-d400fd0bf935?auto=format&fit=crop&w=600&q=80" alt="Book">
+            <div class="book-info">
+                <h3>Python for Beginners</h3>
+                <p class="author">By James Anderson</p>
+                <div class="rating">★★★★★</div>
+                <div class="book-bottom">
+                    <span class="price">Rs. 1,999</span>
+                    <button class="add-btn" onclick="addToCart(this)">Add</button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<section class="authors" id="authors">
+    <div class="section">
+        <div class="section-title">
+            <h2>Meet Our Writers</h2>
+            <p>Discover books from talented authors and writers.</p>
+        </div>
+
+        <div class="author-grid">
+            <div class="author-card">
+                <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Author">
+                <h3>John Smith</h3>
+                <p>Fiction writer and storyteller with more than 10 published books.</p>
+            </div>
+            <div class="author-card">
+                <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Author">
+                <h3>Sarah Wilson</h3>
+                <p>Education writer focused on learning and personal development.</p>
+            </div>
+            <div class="author-card">
+                <img src="https://randomuser.me/api/portraits/men/52.jpg" alt="Author">
+                <h3>Ahmed Khan</h3>
+                <p>Technology author and software development educator.</p>
+            </div>
+            <div class="author-card">
+                <img src="https://randomuser.me/api/portraits/women/65.jpg" alt="Author">
+                <h3>Emma Brown</h3>
+                <p>Fiction author and mystery storyteller.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="seller-section" id="seller">
+    <div class="section">
+        <div class="seller-container">
+            <div class="seller-text">
+                <h2>Sell Your Books With Us</h2>
+                <p>Are you a bookstore owner, publisher or independent writer? List your books on BookNest and reach more readers.</p>
+                <ul class="seller-list">
+                    <li>Create your seller profile</li>
+                    <li>Add your books</li>
+                    <li>Set your own prices</li>
+                    <li>Manage your inventory</li>
+                    <li>Receive customer orders</li>
+                    <li>Grow your audience</li>
+                </ul>
+            </div>
+
+            <div class="seller-form">
+                <h3>Add Your Book</h3>
+                <form id="sellerForm">
+                    <div class="form-group">
+                        <label>Seller / Writer Name</label>
+                        <input type="text" id="sellerName" placeholder="Enter your name" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Book Name</label>
+                        <input type="text" id="bookName" placeholder="Enter book name" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Category</label>
+                        <select id="bookCategory">
+                            <option>Fiction</option>
+                            <option>Business</option>
+                            <option>Technology</option>
+                            <option>Education</option>
+                            <option>Islamic</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Price</label>
+                        <input type="number" id="bookPrice" min="1" placeholder="Enter price" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Book Description</label>
+                        <textarea id="bookDescription" placeholder="Write about your book..."></textarea>
+                    </div>
+                    <button class="submit-btn" type="submit">Submit Book</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section" id="about">
+    <div class="section-title">
+        <h2>About BookNest</h2>
+    </div>
+    <div class="about">
+        <p>BookNest is an online bookstore designed to connect readers, sellers, publishers and writers in one place. Our goal is to make discovering and purchasing books simple and enjoyable. From fiction and education to technology, business and Islamic literature, our platform offers books for every type of reader.</p>
+    </div>
+</section>
+
+<section class="section" id="contact">
+    <div class="section-title">
+        <h2>Contact Us</h2>
+        <p>Have a question? We are here to help.</p>
+    </div>
+    <div class="contact-box">
+        <div class="contact-card">
+            <h3>Email</h3>
+            <p>support@booknest.com</p>
+        </div>
+        <div class="contact-card">
+            <h3>Phone</h3>
+            <p>+92 300 1234567</p>
+        </div>
+        <div class="contact-card">
+            <h3>Location</h3>
+            <p>Karachi, Pakistan</p>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <div class="footer-container">
+        <div class="footer-column">
+            <h3>BookNest</h3>
+            <p>Your online destination for books, authors and stories.</p>
+        </div>
+        <div class="footer-column">
+            <h3>Quick Links</h3>
+            <a href="#home">Home</a>
+            <a href="#shop">Shop</a>
+            <a href="#authors">Authors</a>
+            <a href="#about">About</a>
+        </div>
+        <div class="footer-column">
+            <h3>Categories</h3>
+            <a href="#shop">Fiction</a>
+            <a href="#shop">Business</a>
+            <a href="#shop">Technology</a>
+            <a href="#shop">Education</a>
+        </div>
+        <div class="footer-column">
+            <h3>For Sellers</h3>
+            <a href="#seller">Sell Books</a>
+            <a href="#seller">Become a Writer</a>
+            <a href="#contact">Support</a>
+        </div>
+    </div>
+    <div class="copyright">
+        © 2026 BookNest. All Rights Reserved.
+    </div>
+</footer>
+
+<div class="cart-sidebar" id="cartSidebar">
+    <div class="cart-header">
+        <h2>Your Cart</h2>
+        <button class="close-cart" onclick="closeCart()">×</button>
+    </div>
+    <div id="cartItems"></div>
+    <div class="cart-total">
+        <span>Total:</span>
+        <span>Rs. <span id="cartTotal">0</span></span>
+    </div>
+    <button class="checkout-btn" onclick="checkout()">Proceed to Checkout</button>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
